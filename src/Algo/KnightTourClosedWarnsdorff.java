@@ -182,7 +182,7 @@ public class KnightTourClosedWarnsdorff{
         if (!neighbour(ret.x, ret.y, sx, sy))
             return false;
 
-        printBoard();
+        if (display) printBoard();
         return true;
     }
 
@@ -194,7 +194,7 @@ public class KnightTourClosedWarnsdorff{
             }
         }
 
-        if (non_x == sx || non_y == sy) throw new IllegalArgumentException("sx: " + sx + " non_x: " + non_x + " sy: " + sy + " non_y: " + non_y);
+        if (non_x == sx && non_y == sy) throw new IllegalArgumentException("sx: " + sx + " non_x: " + non_x + " sy: " + sy + " non_y: " + non_y);
 
         Cell cell = new Cell(sx, sy);
         board[cell.x][cell.y] = 1;
@@ -216,18 +216,33 @@ public class KnightTourClosedWarnsdorff{
         return true;
     }
 
+    public boolean isStructuredPath() {
+        boolean b1 = Math.abs(board[0][1] - board[2][0]) == 1;
+        boolean b2 = Math.abs(board[0][2] - board[1][0]) == 1;
+        boolean b3 = Math.abs(board[0][boardSizeY-3] - board[1][boardSizeY-1]) == 1;
+        boolean b4 = Math.abs(board[0][boardSizeY-2] - board[2][boardSizeY-1]) == 1;
+        boolean b5 = Math.abs(board[boardSizeX-1][1] - board[boardSizeX-3][0]) == 1;
+        boolean b6 = Math.abs(board[boardSizeX-1][2] - board[boardSizeX-2][0]) == 1;
+        boolean b7 = Math.abs(board[boardSizeX-1][boardSizeY-3] - board[boardSizeX-2][boardSizeY-1]) == 1;
+        boolean b8 = Math.abs(board[boardSizeX-1][boardSizeY-2] - board[boardSizeX-3][boardSizeY-1]) == 1;
+
+        return (b1 && b2 && b3 && b4 && b5 && b6 && b7 && b8);
+    }
+
     public void solve(int sx, int sy) {
-        while (!findClosedTour(sx, sy));
+        while (!findClosedTour(sx, sy)) {}
     }
 
     public void solve(int sx, int sy, int non_x, int non_y) {
-        while (!findClosedTour(sx, sy, non_x, non_y)) ;
+        while (!findClosedTour(sx, sy, non_x, non_y)) {}
     }
 
     // Driver Code
     public static void main(String[] args) {
-        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(8,8,true);
-        tmp.solve(4,4);
+        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(6,6,true);
+        while(!tmp.isStructuredPath())
+            tmp.solve(1,1);
+        System.out.println(tmp.isStructuredPath());
     }
 }
 

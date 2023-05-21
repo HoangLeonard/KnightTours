@@ -217,11 +217,11 @@ public class KnightTourOpenedBacktracking implements Solver{
                         cells[pre[0]][pre[1]].displayImage(false);
                     }
                     path.add(new int[]{x, y});
-                    Thread.sleep(1000);
+                    Thread.sleep(300);
                 } else if (code[0].equals("try")) {
                     try {
                         cells[x][y].displayOverlay(true);
-                        Thread.sleep(300);
+                        Thread.sleep(100);
                         if (cells[x][y].getNumber() != 0) {
                             cells[x][y].displayOverlay(false);
                         }
@@ -233,7 +233,7 @@ public class KnightTourOpenedBacktracking implements Solver{
                     path.remove(path.size()-1);
                     int[] pre = path.get(path.size()-1);
                     cells[pre[0]][pre[1]].displayImage(true);
-                    Thread.sleep(300);
+                    Thread.sleep(100);
                 }
             }
             bufferedReader.close();
