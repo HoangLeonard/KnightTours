@@ -69,6 +69,8 @@ public class KnightTourOpenedWarnsdorff {
 
 
     public static void main(String[] args) {
+
+        // interesting cases (3,7) (3,8) (3,4)
         KnightTourOpenedWarnsdorff a = new KnightTourOpenedWarnsdorff(30,30);
         a.closedTours();
         a.printBoard();

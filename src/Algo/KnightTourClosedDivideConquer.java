@@ -23,7 +23,7 @@ public class KnightTourClosedDivideConquer {
         for (int i = 0; i < boardSizeX; i++)
             for (int j = 0; j < boardSizeY; j++)
                 this.board[i][j] = -1;
-        this.path = new Illu.KnightToursPath(boardSizeX, boardSizeY, board);
+        this.path = new Illu.KnightToursPath(boardSizeX, boardSizeY);
         this.random = new Random();
     }
 
@@ -125,11 +125,12 @@ public class KnightTourClosedDivideConquer {
         int width = y2 - y1;
         int unequalHeight = height/2;
         int unequalWidth = width/2;
-
+        // Số chẵn gần trung vị nhất
         if ((unequalHeight = height/2) % 2 == 1) unequalHeight += 1;
         if ((unequalWidth = width/2) % 2 == 1) unequalWidth += 1;
 
         if (!(height % 2 == 1 && width % 2 == 1)) {
+
             if (Math.min(height, width) < 12 && Math.min(height, width) >= 6) {
                 heuristicSolve(x1,x2, y1, y2);
             } else {
@@ -196,12 +197,31 @@ public class KnightTourClosedDivideConquer {
 //        divq.heuristicSolve(6,12,0,6);
 //        divq.heuristicSolve(6,12,6,12);
 //
-        int boardSizeX = 31;
-        int boardSizeY = 29;
-////
-        KnightTourClosedDivideConquer divq = new KnightTourClosedDivideConquer(boardSizeX, boardSizeY, true);
-        divq.solve(0,boardSizeX, 0, boardSizeY);
-        //interesting cases: (8*2*2, 8*2*2) (31, 42) (13*2, 11*2) (31, 29)
+
+
+
+        for (int k = 0; k < 3; k++) {
+            for (int i = 100; i < 3000; i = i + 100) {
+                long startTime = System.currentTimeMillis();
+                KnightTourClosedDivideConquer tmp = new KnightTourClosedDivideConquer(i, i, false);
+                tmp.solve(0, i, 0, i);
+                System.out.println(i + " " + String.valueOf(System.currentTimeMillis() - startTime));
+            }
+        }
+
+//        int boardSizeX = 14;
+//        int boardSizeY = 18;
+//
+//        KnightTourClosedDivideConquer divq = new KnightTourClosedDivideConquer(boardSizeX, boardSizeY, true);
+//        divq.solve(0,boardSizeX, 0, boardSizeY);
+        // interesting cases: (8*2*2, 8*2*2) (31, 42) (13*2, 11*2) (31, 29)
+
+
+
+
+
+
+
 
     }
 

@@ -84,13 +84,14 @@ public class KnightToursPath extends JFrame {
 
         getContentPane().add(boardPanel);
         setLocationRelativeTo(null);
-        setVisible(true);
+//        setVisible(true);
     }
 
     private void windowComponentResized(ComponentEvent e) {
-        int new_size = this.getHeight()/(boardSizeX+1);
+        int new_size = Math.min(this.getHeight()/(boardSizeX+1), this.getWidth()/(boardSizeY+1));
+
         this.cellSize = new_size;
-        boardPanel.repaint();
+//        boardPanel.repaint();
     }
 
     public void addLine(int x1, int y1, int x2, int y2) {
@@ -116,12 +117,38 @@ public class KnightToursPath extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            KnightToursPath knightToursPath = new KnightToursPath(8, 8);
+//            KnightToursPath knightToursPath = new KnightToursPath(8, 8);
 //            knightToursPath.move(0, 0, 4, 4); // Ví dụ: Vẽ đường thẳng từ ô (0, 0) đến ô (4, 4)
-            knightToursPath.addLine(0,0, 1,2);
-            knightToursPath.addLine(1, 2, 4,5);
-//            knightToursPath.addLine(4,5,7,2);
-//            knightToursPath.addLine(7,2,0,0);
+//            knightToursPath.addLine(1,0, 0,2);
+//            knightToursPath.addLine(0, 1, 2,0);
+//            knightToursPath.addLine(6,0, 7,2);
+//            knightToursPath.addLine(0, 6, 2,7);
+//            knightToursPath.addLine(5,0, 7,1);
+//            knightToursPath.addLine(0, 5, 1,7);
+//            knightToursPath.addLine(7,5, 6,7);
+//            knightToursPath.addLine(5, 7, 7,6);
+
+            int unequalHeight = 6;
+            int unequalWidth = 6;
+            int x1 = 0;
+            int y1 = 0;
+
+            KnightToursPath path = new KnightToursPath(12, 12);
+            path.addLine(x1 + unequalHeight - 1, y1 + unequalWidth - 3, x1 + unequalHeight, y1 + unequalWidth - 1);
+            path.addLine(x1 + unequalHeight - 1, y1 + unequalWidth - 3, x1 + unequalHeight - 2, y1 + unequalWidth - 1);
+            path.remove(x1 + unequalHeight - 1, y1 + unequalWidth - 3, x1 + unequalHeight - 2, y1 + unequalWidth - 1);
+
+            path.addLine(x1 + unequalHeight + 2, y1 + unequalWidth - 2, x1 + unequalHeight + 1, y1 + unequalWidth);
+            path.addLine(x1 + unequalHeight + 2, y1 + unequalWidth - 2, x1 + unequalHeight, y1 + unequalWidth - 1);
+            path.remove(x1 + unequalHeight + 2, y1 + unequalWidth - 2, x1 + unequalHeight, y1 + unequalWidth - 1);
+
+            path.addLine(x1 + unequalHeight, y1 + unequalWidth + 2, x1 + unequalHeight - 1, y1 + unequalWidth);
+            path.addLine(x1 + unequalHeight + 1, y1 + unequalWidth, x1 + unequalHeight, y1 + unequalWidth + 2);
+            path.remove(x1 + unequalHeight + 1, y1 + unequalWidth, x1 + unequalHeight, y1 + unequalWidth + 2);
+
+            path.addLine(x1 + unequalHeight - 2, y1 + unequalWidth - 1, x1 + unequalHeight - 3, y1 + unequalWidth + 1);
+            path.addLine(x1 + unequalHeight - 1, y1 + unequalWidth, x1 + unequalHeight - 3, y1 + unequalWidth + 1);
+            path.remove(x1 + unequalHeight - 1, y1 + unequalWidth, x1 + unequalHeight - 3, y1 + unequalWidth + 1);
 
         });
     }

@@ -8,7 +8,7 @@ public class KnightTourClosedWarnsdorff{
     private boolean display = false;
     public int cx[] = {1, 1, 2, 2, -1, -1, -2, -2};
     public int cy[] = {2, -2, 1, -1, 2, -2, 1, -1};
-
+    public int move = 1;
     public Illu.KnightToursPath path;
 
     public KnightTourClosedWarnsdorff(int boardSizeX, int boardSizeY, boolean display) {
@@ -239,10 +239,15 @@ public class KnightTourClosedWarnsdorff{
 
     // Driver Code
     public static void main(String[] args) {
-        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(6,6,true);
+
+        // interesting cases (3,18), (3, 16)
+        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(30,30,true);
+
         while(!tmp.isStructuredPath())
             tmp.solve(1,1);
         System.out.println(tmp.isStructuredPath());
+
+
     }
 }
 
