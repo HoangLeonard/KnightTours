@@ -241,7 +241,7 @@ public class KnightTourClosedWarnsdorff{
     public static void main(String[] args) {
 
         // interesting cases (3,18), (3, 16)
-        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(30,30,true);
+        KnightTourClosedWarnsdorff tmp = new KnightTourClosedWarnsdorff(12,12,true);
 
         while(!tmp.isStructuredPath())
             tmp.solve(1,1);

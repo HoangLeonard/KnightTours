@@ -177,78 +177,78 @@ public class KnightTourOpenedBacktracking implements Solver{
     }
 
     public static void main(String[] args) {
-//        String outputFile = "src/Algo/BacktrackStep.txt";
-//        int numCells = 5;
-//        try {
-//            // Tạo một đối tượng FileOutputStream để ghi dữ liệu vào file
-//            FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
-//            PrintStream printStream = new PrintStream(fileOutputStream);
-//            PrintStream stdOutput = System.out;
-//            System.setOut(printStream);
-//
-//            KnightTourOpenedBacktracking bt = new KnightTourOpenedBacktracking(numCells, numCells, true);
-//            bt.solve();
-//
-//            // Đóng luồng ghi
-//            printStream.close();
-//            fileOutputStream.close();
-//            System.setOut(stdOutput);
-//            System.out.println("Thuật toán chạy thành công, thực hiện in lời giải.");
-//            bt.printSolution();
-//
-//            KnightToursIllustration i = new KnightToursIllustration(numCells, numCells);
-//            KnightToursIllustration.Board tmp = i.getBoard();
-//            Cell[][] cells = tmp.getCells();
-//            ArrayList<int[]> path = new ArrayList<>();
-//            int move = 0;
-//            FileReader fileReader = new FileReader(outputFile);
-//            BufferedReader bufferedReader = new BufferedReader(fileReader);
-//            String line;
-//            while ((line = bufferedReader.readLine()) != null) {
-//                String[] code = line.split(" ");
-//                int x = Integer.parseInt(code[1]);
-//                int y = Integer.parseInt(code[2]);
-//                if (code[0].equals("move")) {
-//                    move++;
-//                    cells[x][y].setNumber(move);
-//                    cells[x][y].setProperties(true, true, false);
-//                    if (path.size() > 0) {
-//                        int[] pre = path.get(path.size()-1);
-//                        cells[pre[0]][pre[1]].displayImage(false);
-//                    }
-//                    path.add(new int[]{x, y});
-//                    Thread.sleep(300);
-//                } else if (code[0].equals("try")) {
-//                    try {
-//                        cells[x][y].displayOverlay(true);
-//                        Thread.sleep(100);
-//                        if (cells[x][y].getNumber() != 0) {
-//                            cells[x][y].displayOverlay(false);
-//                        }
-//                    } catch (Exception ignore) {}
-//                } else if (code[0].equals("back")) {
-//                    move--;
-//                    cells[x][y].setNumber(0);
-//                    cells[x][y].setProperties(false, false, false);
-//                    path.remove(path.size()-1);
-//                    int[] pre = path.get(path.size()-1);
-//                    cells[pre[0]][pre[1]].displayImage(true);
-//                    Thread.sleep(100);
-//                }
-//            }
-//            bufferedReader.close();
-//
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        String outputFile = "src/Algo/BacktrackStep.txt";
+        int numCells = 5;
+        try {
+            // Tạo một đối tượng FileOutputStream để ghi dữ liệu vào file
+            FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
+            PrintStream printStream = new PrintStream(fileOutputStream);
+            PrintStream stdOutput = System.out;
+            System.setOut(printStream);
 
-        KnightTourOpenedBacktracking bt = new KnightTourOpenedBacktracking(7, 8,false);
-        bt.solve();
-        bt.printSolution();
-        System.out.println(bt.getSize());
-        System.out.println(bt.getExecutionTime());
-        System.out.println(bt.getTrialCount());
-        System.out.println(bt.getMoveCount());
+            KnightTourOpenedBacktracking bt = new KnightTourOpenedBacktracking(numCells, numCells, true);
+            bt.solve();
+
+            // Đóng luồng ghi
+            printStream.close();
+            fileOutputStream.close();
+            System.setOut(stdOutput);
+            System.out.println("Thuật toán chạy thành công, thực hiện in lời giải.");
+            bt.printSolution();
+
+            KnightToursIllustration i = new KnightToursIllustration(numCells, numCells);
+            KnightToursIllustration.Board tmp = i.getBoard();
+            Cell[][] cells = tmp.getCells();
+            ArrayList<int[]> path = new ArrayList<>();
+            int move = 0;
+            FileReader fileReader = new FileReader(outputFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] code = line.split(" ");
+                int x = Integer.parseInt(code[1]);
+                int y = Integer.parseInt(code[2]);
+                if (code[0].equals("move")) {
+                    move++;
+                    cells[x][y].setNumber(move);
+                    cells[x][y].setProperties(true, true, false);
+                    if (path.size() > 0) {
+                        int[] pre = path.get(path.size()-1);
+                        cells[pre[0]][pre[1]].displayImage(false);
+                    }
+                    path.add(new int[]{x, y});
+                    Thread.sleep(300);
+                } else if (code[0].equals("try")) {
+                    try {
+                        cells[x][y].displayOverlay(true);
+                        Thread.sleep(100);
+                        if (cells[x][y].getNumber() != 0) {
+                            cells[x][y].displayOverlay(false);
+                        }
+                    } catch (Exception ignore) {}
+                } else if (code[0].equals("back")) {
+                    move--;
+                    cells[x][y].setNumber(0);
+                    cells[x][y].setProperties(false, false, false);
+                    path.remove(path.size()-1);
+                    int[] pre = path.get(path.size()-1);
+                    cells[pre[0]][pre[1]].displayImage(true);
+                    Thread.sleep(100);
+                }
+            }
+            bufferedReader.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+//        KnightTourOpenedBacktracking bt = new KnightTourOpenedBacktracking(7, 8,false);
+//        bt.solve();
+//        bt.printSolution();
+//        System.out.println(bt.getSize());
+//        System.out.println(bt.getExecutionTime());
+//        System.out.println(bt.getTrialCount());
+//        System.out.println(bt.getMoveCount());
     }
 }

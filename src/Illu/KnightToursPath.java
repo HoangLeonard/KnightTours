@@ -84,14 +84,14 @@ public class KnightToursPath extends JFrame {
 
         getContentPane().add(boardPanel);
         setLocationRelativeTo(null);
-//        setVisible(true);
+        setVisible(true);
     }
 
     private void windowComponentResized(ComponentEvent e) {
         int new_size = Math.min(this.getHeight()/(boardSizeX+1), this.getWidth()/(boardSizeY+1));
 
         this.cellSize = new_size;
-//        boardPanel.repaint();
+        boardPanel.repaint();
     }
 
     public void addLine(int x1, int y1, int x2, int y2) {
